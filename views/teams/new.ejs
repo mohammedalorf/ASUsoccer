@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+<h1>New Team</h1>
+<form method="POST" action="/teams" class="form">
+  <label>Name<input name="name" required></label>
+  <label>Coach
+    <select name="coach_id" required>
+      <option value="">Select coach</option>
+      <% coaches.forEach(c => { %>
+        <option value="<%= c.asu_id %>"><%= c.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <button type="submit" class="btn">Create</button>
+</form>
+<%- include('../partials/footer') %>

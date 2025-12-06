@@ -1,0 +1,38 @@
+<%- include('../partials/header') %>
+<div class="page-header">
+  <div>
+    <h1><%= team?.name %></h1>
+    <p>Coach: <%= coach ? coach.name : 'TBD' %></p>
+  </div>
+</div>
+<h3>Roster</h3>
+<table>
+  <thead>
+    <tr><th>Name</th><th>Jersey #</th><th>Goals</th><th>Salary</th></tr>
+  </thead>
+  <tbody>
+    <% roster.forEach(player => { %>
+      <tr>
+        <td><%= player.name %></td>
+        <td><%= player.jersey_num || '-' %></td>
+        <td><%= player.num_of_goals %></td>
+        <td>$<%= player.salary %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<h3>Add Player</h3>
+<form method="POST" action="/teams/<%= team?.tm_id %>/add-player" class="form grid-two">
+  <label>Player
+    <select name="asu_id" required>
+      <% players.forEach(p => { %>
+        <option value="<%= p.asu_id %>"><%= p.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Salary<input type="number" name="salary" value="0" min="0" required></label>
+  <label>Goals<input type="number" name="num_of_goals" value="0" min="0" required></label>
+  <label>Jersey #<input type="number" name="jersey_num" min="0" required></label>
+  <button type="submit" class="btn">Save Player</button>
+</form>
+<%- include('../partials/footer') %>

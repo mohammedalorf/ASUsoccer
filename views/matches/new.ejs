@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+<h1>New Match</h1>
+<form method="POST" action="/matches" class="form">
+  <label>Date<input type="date" name="match_date" required></label>
+  <label>Score<input name="score" required></label>
+  <label>Best Player
+    <select name="best_player" required>
+      <option value="">Select player</option>
+      <% players.forEach(p => { %>
+        <option value="<%= p.asu_id %>"><%= p.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <% if (error) { %>
+    <div class="notice error"><%= error %></div>
+  <% } %>
+  <label>Home Team
+    <select name="home_team" required>
+      <option value="">Select team</option>
+      <% teams.forEach(t => { %>
+        <option value="<%= t.tm_id %>" <%= form?.home_team == t.tm_id ? 'selected' : '' %>><%= t.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Away Team
+    <select name="away_team" required>
+      <option value="">Select team</option>
+      <% teams.forEach(t => { %>
+        <option value="<%= t.tm_id %>" <%= form?.away_team == t.tm_id ? 'selected' : '' %>><%= t.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Winner
+    <select name="winner" required>
+      <option value="">Select winner</option>
+      <option value="draw" <%= form?.winner === 'draw' ? 'selected' : '' %>>Draw</option>
+      <% teams.forEach(t => { %>
+        <option value="<%= t.tm_id %>" <%= form?.winner == t.tm_id ? 'selected' : '' %>><%= t.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <button type="submit" class="btn">Create</button>
+</form>
+<%- include('../partials/footer') %>

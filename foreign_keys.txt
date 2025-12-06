@@ -1,0 +1,21 @@
+  table_name  | column_name | foreign_table_name | foreign_column_name 
+--------------+-------------+--------------------+---------------------
+ assignedto   | asu_id      | referee            | asu_id
+ assignedto   | match_id    | match              | match_id
+ coach        | asu_id      | person             | asu_id
+ event        | match_id    | match              | match_id
+ event        | player_id   | player             | asu_id
+ event        | referee_id  | referee            | asu_id
+ match        | best_player | player             | asu_id
+ match        | winner      | team               | tm_id
+ memberof     | asu_id      | player             | asu_id
+ memberof     | tm_id       | team               | tm_id
+ participates | tm_id       | team               | tm_id
+ participates | tr_id       | tournament         | tr_id
+ player       | asu_id      | person             | asu_id
+ playin       | match_id    | match              | match_id
+ playin       | tm_id       | team               | tm_id
+ referee      | asu_id      | person             | asu_id
+ team         | coach_id    | coach              | asu_id
+(17 rows)
+

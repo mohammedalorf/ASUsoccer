@@ -1,0 +1,20 @@
+<%- include('../partials/header') %>
+<h1><%= player?.name %></h1>
+<p>ASU ID: <%= player?.asu_id %></p>
+<p>DOB: <%= player?.date_of_birth || 'N/A' %></p>
+<h3>Teams</h3>
+<table>
+  <thead>
+    <tr><th>Team</th><th>Jersey #</th><th>Goals</th></tr>
+  </thead>
+  <tbody>
+    <% memberships.forEach(m => { %>
+      <tr>
+        <td><%= m.team_name %></td>
+        <td><%= m.jersey_num || '-' %></td>
+        <td><%= m.num_of_goals %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%- include('../partials/footer') %>

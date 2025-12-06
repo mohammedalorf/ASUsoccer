@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+<div class="page-header">
+  <div>
+    <h1>Match <%= match?.match_id %></h1>
+    <p>Date: <%= match?.match_date || 'TBD' %></p>
+    <p>Score: <%= match?.score || 'TBD' %></p>
+    <p>Winner: <%= match?.winner_name || 'Draw' %></p>
+    <p>Best Player: <%= match?.best_player_name || 'TBD' %></p>
+  </div>
+</div>
+<h3>Teams</h3>
+<ul>
+  <% teams.forEach(t => { %>
+    <li><%= t.name %></li>
+  <% }) %>
+</ul>
+<h3>Update Score</h3>
+<form method="POST" action="/matches/<%= match?.match_id %>/score?_method=PUT" class="form grid-two">
+  <label>Score<input name="score" value="<%= match?.score || '' %>" required></label>
+  <label>Winner
+    <select name="winner" required>
+      <option value="">Select winner</option>
+      <option value="draw" <%= match?.winner ? '' : 'selected' %>>Draw</option>
+      <% allTeams.forEach(t => { %>
+        <option value="<%= t.tm_id %>" <%= match?.winner === t.tm_id ? 'selected' : '' %>><%= t.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Best Player
+    <select name="best_player" required>
+      <option value="">Select player</option>
+      <% players.forEach(p => { %>
+        <option value="<%= p.asu_id %>" <%= match?.best_player === p.asu_id ? 'selected' : '' %>><%= p.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <button type="submit" class="btn">Save Score</button>
+</form>
+<h3>Events</h3>
+<table>
+  <thead>
+    <tr><th>Type</th><th>Time</th><th>Player</th><th>Referee</th><th></th></tr>
+  </thead>
+  <tbody>
+    <% events.forEach(e => { %>
+      <tr>
+        <td><%= e.type %></td>
+        <td><%= e.event_time %></td>
+        <td><%= e.player_name || 'N/A' %></td>
+        <td><%= e.referee_name || 'N/A' %></td>
+        <td>
+          <form method="POST" action="/events/<%= e.event_id %>?_method=DELETE">
+            <input type="hidden" name="match_id" value="<%= match?.match_id %>">
+            <button type="submit" class="link danger">Delete</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<a class="btn" href="/events/new?match_id=<%= match?.match_id %>">Add Event</a>
+<%- include('../partials/footer') %>

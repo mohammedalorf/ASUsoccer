@@ -1,0 +1,11 @@
+<%- include('../partials/header') %>
+<h1>New Tournament</h1>
+<form method="POST" action="/tournaments" class="form">
+  <label>Name<input name="name" required></label>
+  <label>Status<input name="status" required></label>
+  <label>Start Date<input type="date" name="start_date" required></label>
+  <label>End Date<input type="date" name="end_date" required></label>
+  <label>Rounds<input type="number" name="rounds" min="1" required></label>
+  <button type="submit" class="btn">Create</button>
+</form>
+<%- include('../partials/footer') %>

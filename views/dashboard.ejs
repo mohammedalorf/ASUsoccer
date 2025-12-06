@@ -1,0 +1,35 @@
+<%- include('partials/header') %>
+<% const stats = (typeof counts !== 'undefined' && counts) ? counts : { tournaments: 0, teams: 0, players: 0, matches: 0 }; %>
+<section class="hero">
+  <h1>Welcome to ASUsoccer</h1>
+  <p>Quick overview of your soccer data.</p>
+</section>
+<section class="grid">
+  <div class="card">
+    <h2>Tournaments</h2>
+    <p class="stat"><%= stats.tournaments || 0 %></p>
+    <a href="/tournaments" class="btn">View</a>
+  </div>
+  <div class="card">
+    <h2>Teams</h2>
+    <p class="stat"><%= stats.teams || 0 %></p>
+    <a href="/teams" class="btn">View</a>
+  </div>
+  <div class="card">
+    <h2>Players</h2>
+    <p class="stat"><%= stats.players || 0 %></p>
+    <a href="/players" class="btn">View</a>
+  </div>
+  <div class="card">
+    <h2>Matches</h2>
+    <p class="stat"><%= stats.matches || 0 %></p>
+    <a href="/matches" class="btn">View</a>
+  </div>
+</section>
+<% if (message) { %>
+  <div class="notice success"><%= message %></div>
+<% } %>
+<% if (error) { %>
+  <div class="notice error"><%= error %></div>
+<% } %>
+<%- include('partials/footer') %>

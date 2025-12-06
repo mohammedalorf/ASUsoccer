@@ -1,0 +1,55 @@
+<%- include('../partials/header') %>
+<% const startValue = tournament?.start_date ? (tournament.start_date.toISOString ? tournament.start_date.toISOString().split('T')[0] : tournament.start_date) : ''; %>
+<% const endValue = tournament?.end_date ? (tournament.end_date.toISOString ? tournament.end_date.toISOString().split('T')[0] : tournament.end_date) : ''; %>
+<h1>Edit Tournament</h1>
+<form method="POST" action="/tournaments/<%= tournament?.tr_id %>?_method=PUT" class="form">
+  <label>Name<input name="name" required value="<%= tournament?.name %>"></label>
+  <label>Status<input name="status" required value="<%= tournament?.status %>"></label>
+  <label>Start Date<input type="date" name="start_date" required value="<%= startValue %>"></label>
+  <label>End Date<input type="date" name="end_date" required value="<%= endValue %>"></label>
+  <label>Rounds<input type="number" name="rounds" min="1" required value="<%= tournament?.rounds %>"></label>
+  <button type="submit" class="btn">Update</button>
+</form>
+
+<h3>Participating Teams</h3>
+<table>
+  <thead>
+    <tr><th>Team</th><th>Position</th><th>GF</th><th>GA</th><th>MP</th><th>W</th><th>L</th><th>D</th><th>Points</th></tr>
+  </thead>
+  <tbody>
+    <% participants.forEach(p => { %>
+      <tr>
+        <td><%= p.team_name %></td>
+        <td><%= p.team_position || '-' %></td>
+        <td><%= p.goal_for %></td>
+        <td><%= p.goal_against %></td>
+        <td><%= p.match_played %></td>
+        <td><%= p.won %></td>
+        <td><%= p.lost %></td>
+        <td><%= p.draw %></td>
+        <td><%= p.points %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<h3>Add/Update Team</h3>
+<form method="POST" action="/tournaments/<%= tournament?.tr_id %>/teams" class="form grid-two">
+  <label>Team
+    <select name="tm_id" required>
+      <% teams.forEach(team => { %>
+        <option value="<%= team.tm_id %>"><%= team.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Position<input type="number" name="team_position" required></label>
+  <label>Goals For<input type="number" name="goal_for" min="0" value="0" required></label>
+  <label>Goals Against<input type="number" name="goal_against" min="0" value="0" required></label>
+  <label>Matches Played<input type="number" name="match_played" min="0" value="0" required></label>
+  <label>Won<input type="number" name="won" min="0" value="0" required></label>
+  <label>Lost<input type="number" name="lost" min="0" value="0" required></label>
+  <label>Draw<input type="number" name="draw" min="0" value="0" required></label>
+  <label>Points<input type="number" name="points" min="0" value="0" required></label>
+  <button type="submit" class="btn">Save Team</button>
+</form>
+<%- include('../partials/footer') %>

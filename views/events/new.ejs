@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<h1>New Event</h1>
+<form method="POST" action="/events" class="form">
+  <label>Type<input name="type" required placeholder="Goal, Card, etc"></label>
+  <label>Time (min)<input type="number" name="event_time" min="0" required></label>
+  <label>Referee
+    <select name="referee_id" required>
+      <option value="">Select referee</option>
+      <% referees.forEach(r => { %>
+        <option value="<%= r.asu_id %>"><%= r.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Player
+    <select name="player_id" required>
+      <option value="">Select player</option>
+      <% players.forEach(p => { %>
+        <option value="<%= p.asu_id %>"><%= p.name %></option>
+      <% }) %>
+    </select>
+  </label>
+  <label>Match
+    <select name="match_id" required>
+      <% matches.forEach(m => { %>
+        <option value="<%= m.match_id %>" <%= defaultMatch == m.match_id ? 'selected' : '' %>>Match <%= m.match_id %> (<%= m.match_date || 'no date' %>)</option>
+      <% }) %>
+    </select>
+  </label>
+  <button type="submit" class="btn">Create Event</button>
+</form>
+<%- include('../partials/footer') %>

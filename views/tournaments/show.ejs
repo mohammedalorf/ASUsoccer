@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+<div class="page-header">
+  <div>
+    <h1><%= tournament?.name %></h1>
+    <p>Status: <%= tournament?.status || 'TBD' %></p>
+    <p>Dates: <%= tournament?.start_date || 'TBD' %> - <%= tournament?.end_date || 'TBD' %></p>
+    <p>Top Team: <%= derivedWinner || 'TBD' %></p>
+  </div>
+  <a class="btn" href="/tournaments/<%= tournament?.tr_id %>/edit">Edit</a>
+</div>
+<h3>Participating Teams</h3>
+<table>
+  <thead>
+    <tr><th>Team</th><th>Position</th><th>GF</th><th>GA</th><th>MP</th><th>W</th><th>L</th><th>D</th><th>Points</th></tr>
+  </thead>
+  <tbody>
+    <% participants.forEach(p => { %>
+      <tr>
+        <td><%= p.team_name %></td>
+        <td><%= p.team_position || '-' %></td>
+        <td><%= p.goal_for %></td>
+        <td><%= p.goal_against %></td>
+        <td><%= p.match_played %></td>
+        <td><%= p.won %></td>
+        <td><%= p.lost %></td>
+        <td><%= p.draw %></td>
+        <td><%= p.points %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%- include('../partials/footer') %>

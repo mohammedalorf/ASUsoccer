@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+<h1>New Player</h1>
+<form method="POST" action="/players" class="form">
+  <label>ASU ID<input name="asu_id" required></label>
+  <label>Name<input name="name" required></label>
+  <label>Date of Birth<input type="date" name="date_of_birth" required></label>
+  <button type="submit" class="btn">Create</button>
+</form>
+<%- include('../partials/footer') %>
