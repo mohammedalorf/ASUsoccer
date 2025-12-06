@@ -47,6 +47,18 @@
 - Add Event page and match events list
 - Reports pages (Top Scorers, Standings)
 
+## Included Screenshots (screenshots/)
+- Screenshot 2025-12-05 at 10.44.03 PM.png
+- Screenshot 2025-12-05 at 10.44.12 PM.png
+- Screenshot 2025-12-05 at 10.44.23 PM.png
+- Screenshot 2025-12-05 at 10.44.49 PM.png
+- Screenshot 2025-12-05 at 10.44.59 PM.png
+- Screenshot 2025-12-05 at 10.45.09 PM.png
+- Screenshot 2025-12-05 at 10.45.19 PM.png
+- Screenshot 2025-12-05 at 10.45.22 PM.png
+- Screenshot 2025-12-05 at 10.45.32 PM.png
+- Screenshot 2025-12-05 at 10.45.51 PM.png
+
 ## Error Handling
 - DB connection failure: pages render an error message instead of crashing.
 - Validation errors: e.g., selecting the same team twice for a match shows “Home and Away team cannot be the same.”
