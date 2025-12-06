@@ -34,30 +34,36 @@
 6) Add Event: attach to the match.
 7) Reports: open Top Scorers and Tournament Standings.
 
-## Screenshots Checklist
-- Dashboard
-- Tournaments list
-- Tournament details page (standings visible)
-- Tournament edit page (Add/Update Team visible)
-- Teams list
-- Team details roster page
-- Players list
-- Match creation page (team dropdowns + draw option)
-- Match details page (score/winner/best player visible)
-- Add Event page and match events list
-- Reports pages (Top Scorers, Standings)
+## Screenshots
+Figure 1: Dashboard
+![Figure 1: Dashboard](screenshots/01-dashboard.png)
 
-## Included Screenshots (screenshots/)
-- Screenshot 2025-12-05 at 10.44.03 PM.png
-- Screenshot 2025-12-05 at 10.44.12 PM.png
-- Screenshot 2025-12-05 at 10.44.23 PM.png
-- Screenshot 2025-12-05 at 10.44.49 PM.png
-- Screenshot 2025-12-05 at 10.44.59 PM.png
-- Screenshot 2025-12-05 at 10.45.09 PM.png
-- Screenshot 2025-12-05 at 10.45.19 PM.png
-- Screenshot 2025-12-05 at 10.45.22 PM.png
-- Screenshot 2025-12-05 at 10.45.32 PM.png
-- Screenshot 2025-12-05 at 10.45.51 PM.png
+Figure 2: Tournaments list
+![Figure 2: Tournaments list](screenshots/02-tournaments-list.png)
+
+Figure 3: Tournament details (standings visible)
+![Figure 3: Tournament details](screenshots/03-tournament-details.png)
+
+Figure 4: Tournament edit (Add/Update Team visible)
+![Figure 4: Tournament edit](screenshots/04-tournament-edit.png)
+
+Figure 5: Teams list
+![Figure 5: Teams list](screenshots/05-teams-list.png)
+
+Figure 6: Team roster
+![Figure 6: Team roster](screenshots/06-team-roster.png)
+
+Figure 7: Players list
+![Figure 7: Players list](screenshots/07-players-list.png)
+
+Figure 8: Match creation (team dropdowns + draw option)
+![Figure 8: Match creation](screenshots/08-match-new.png)
+
+Figure 9: Match details (score/winner/best player visible)
+![Figure 9: Match details](screenshots/09-match-details.png)
+
+Figure 10: Reports
+![Figure 10: Reports](screenshots/10-reports.png)
 
 ## Error Handling
 - DB connection failure: pages render an error message instead of crashing.
